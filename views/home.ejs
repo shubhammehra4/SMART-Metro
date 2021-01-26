@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand</title>
-</head>
-<body>
-    <h1>Hello</h1>
-</body>
-</html>
+<%- include('partials/header') %>
+    <section class="home">
+        <section class="hero">
+            Catch Phrase or Something
+        </section>
+        <form action="/findpath" method="POST">
+            <select name="start" id="start">
+                <option value="" hidden>Source</option>
+                <option value="ab">ab</option>
+                <option value="ab">cd</option>
+                <option value="ab">ab</option>
+                <option value="ab">ab</option>
+                <option value="ab">ab</option>
+            </select>
+            <select name="end" id="end">
+                <option value="" hidden>Destination</option>
+                <option value="ab">ab</option>
+                <option value="ab">ab</option>
+                <option value="ab">cd</option>
+                <option value="ab">ab</option>
+                <option value="ab">ab</option>
+            </select>
+            <button class="btn">Find Route</button>
+        </form>
+    </section>
+<%- include('partials/footer') %>
