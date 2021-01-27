@@ -12,7 +12,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-res.send("/", (req, res) => {
+app.get("/", (req, res) => {
     //TODO: Render a Landing Page
     res.send("landing page go to /home");
 });
@@ -31,12 +31,13 @@ app.get("/about", (req, res) => {
     res.send("about");
 });
 
-app.post("/findroute", async (req, res) => {
+app.post("/findpath", async (req, res) => {
     try {
         const { start, end } = req.body;
-        // Spawn Python script
-        const res = { result: "The path" };
-        return res.status(200).json(res);
+        //TODO: Spawn Python script
+        const result = { start, end };
+
+        return res.status(200).json(result);
     } catch (err) {
         return res.status(500).json({
             message: "Oops Something went wrong!",
