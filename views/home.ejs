@@ -1,10 +1,11 @@
 <%- include('partials/header') %>
+    <script src="/scripts/submit.js" defer></script>
     <section class="home">
         <section class="hero">
             Catch Phrase or Something
         </section>
-        <form action="/findpath" method="POST">
-            <select name="start" id="start">
+        <form>
+            <select required name="start" id="start">
                 <option value="" hidden>Source</option>
                 <option value="ab">ab</option>
                 <option value="ab">cd</option>
@@ -12,7 +13,7 @@
                 <option value="ab">ab</option>
                 <option value="ab">ab</option>
             </select>
-            <select name="end" id="end">
+            <select required name="end" id="end">
                 <option value="" hidden>Destination</option>
                 <option value="ab">ab</option>
                 <option value="ab">ab</option>
@@ -20,7 +21,7 @@
                 <option value="ab">ab</option>
                 <option value="ab">ab</option>
             </select>
-            <button class="btn">Find Route</button>
+            <button id="submit" type="button" class="btn">Find Route</button>
         </form>
     </section>
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>

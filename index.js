@@ -13,8 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    //TODO: Render a Landing Page
-    res.send("landing page go to /home");
+    res.render("landing");
 });
 
 app.get("/home", (req, res) => {
@@ -22,18 +21,16 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/map", (req, res) => {
-    //TODO: Render a Map
-    res.send("map");
+    res.render("map");
 });
 
 app.get("/about", (req, res) => {
-    //TODO: Render About Us
-    res.send("about");
+    res.render("about");
 });
 
-app.post("/findpath", async (req, res) => {
+app.post("/findpath", (req, res) => {
     try {
-        const { start, end } = req.body;
+        const { start, end } = req.query;
         //TODO: Spawn Python script
         const result = { start, end };
 
