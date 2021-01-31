@@ -44,7 +44,7 @@ header {
     align-items: center;
     justify-content: space-around;
     margin-bottom: 1em;
-    animation: 1s fadein 0.5s forwards;
+    animation: 0.6s fadein 0.3s forwards;
     box-shadow: 0 2px 10px rgba(163, 177, 198, 0.6);
     opacity: 0;
     backdrop-filter: blur(20px);
@@ -75,7 +75,7 @@ section.home {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    animation: 0.7s slide-in 0.3s ease-in forwards;
+    animation: 0.6s slide-in 0.3s ease-in forwards;
 }
 @keyframes slide-in {
     0% {
@@ -113,7 +113,8 @@ select {
     box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
         -9px -9px 16px rgba(255, 255, 255, 0.5);
     &:focus {
-        background-color: lightgray;
+        background-color: rgba(235, 235, 235, 0.8);
+        // border: 1px solid gray;
     }
 }
 .btn {
@@ -136,6 +137,11 @@ select {
         box-shadow: 4px 4px 10px rgba(163, 177, 198, 0.6),
             -4px -4px 10px rgba(255, 255, 255, 0.5);
     }
+}
+
+.map,
+.about {
+    margin-top: 10rem;
 }
 
 @media (max-width: 800px) {
