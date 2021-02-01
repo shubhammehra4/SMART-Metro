@@ -294,7 +294,7 @@ int main()
 						value = max(value, uniform_int_distribution<int>(50, 58)(rng));
 						value = min(value, uniform_int_distribution<int>(550, 570)(rng));
 					}
-					cout << s << " " << week[p] << " " << time[j] << " " << value << endl;
+					cout << s << "," << week[p] << "," << time[j] << "," << value << endl;
 				}
 
 			}
