@@ -1,6 +1,7 @@
 const express = require("express"),
     bodyParser = require("body-parser"),
     dotenv = require("dotenv"),
+    spawn = require("child_process").spawn,
     app = express();
 
 dotenv.config();
@@ -44,5 +45,5 @@ app.post("/findpath", (req, res) => {
 });
 
 app.listen(PORT, function () {
-    console.log(`Running on http://locahost:${PORT} in ${NODE_ENV} env`);
+    console.log(`Running on http://localhost:${PORT} in ${NODE_ENV} env`);
 });

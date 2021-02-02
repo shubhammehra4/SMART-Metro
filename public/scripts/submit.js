@@ -10,6 +10,7 @@ $(document).ready(function () {
                 .then((res) => res.json())
                 .then((res) => {
                     console.log(res);
+                    $("#respath").text("Machine is Learning right now!");
                 })
                 .catch((err) => {
                     console.log(err);
