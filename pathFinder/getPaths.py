@@ -28,7 +28,7 @@ def getShortestPath(src,dest,v,vis):
             path=path[-1::-1]
             print('Shortest Path:')
             for x in path:
-                print(x,end='->')
+                print(x,end=',')
             print()
             return
 
@@ -50,7 +50,7 @@ def getAllPossiblePaths(src, dest, v, vis, path):
         path.append(src)
 
         for x in path:
-            print(x,end='->')
+            print(x,end=',')
         print()
         path.pop()
         return
@@ -89,4 +89,4 @@ path = []
 getShortestPath('Dwarka', 'Akshardham', v, vis)
 #print('\n \n\n\n')
 vis = dict.fromkeys(vis, 0)
-getAllPossiblePaths('Dwarka', 'Akshardham', v, vis, path)
+# getAllPossiblePaths('Dwarka', 'Akshardham', v, vis, path)
