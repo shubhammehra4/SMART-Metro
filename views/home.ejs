@@ -7,22 +7,30 @@
         <form>
             <select required name="start" id="start">
                 <option value="" hidden>Source</option>
-                <option value="ab">ab</option>
-                <option value="ab">cd</option>
-                <option value="ab">ab</option>
-                <option value="ab">ab</option>
-                <option value="ab">ab</option>
+                <% stationNames.map((s)=> { %>
+                    <option value="<%=s %>">
+                        <%= s %>
+                    </option>
+                    <% }) %>
             </select>
             <select required name="end" id="end">
                 <option value="" hidden>Destination</option>
-                <option value="ab">ab</option>
-                <option value="ab">ab</option>
-                <option value="ab">cd</option>
-                <option value="ab">ab</option>
-                <option value="ab">ab</option>
+                <% stationNames.map((s)=> { %>
+                    <option value="<%=s %>">
+                        <%= s %>
+                    </option>
+                    <% }) %>
             </select>
             <button id="submit" type="button" class="btn">Find Route</button>
         </form>
-        <section id="respath"></section>
+        <section id="bfspath"></section>
+        <hr id="sep" hidden>
+        <style>
+            hr {
+                height: 1px;
+                width: 50%;
+            }
+        </style>
+        <section id="dfspath"></section>
     </section>
     <%- include('partials/footer') %>
