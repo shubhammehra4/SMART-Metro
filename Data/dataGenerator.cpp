@@ -205,6 +205,7 @@ int main()
 		// 		cerr << p << " ";
 		// 	cerr << endl;
 		// }
+        cout<<"Station,Day,Time,Population"<<endl;
 		fab(0, 100, k)
 		{
 			fab(0, 7, p)
