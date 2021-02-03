@@ -23,14 +23,41 @@
             </select>
             <button id="submit" type="button" class="btn">Find Route</button>
         </form>
-        <section id="bfspath"></section>
-        <hr id="sep" hidden>
+        <section class="flex">
+            <div class="one">
+                <h1 class="hid" hidden>Unweighted</h1>
+                <section id="bfspath"></section>
+            </div>
+            <div>
+                <h1 class="hid" hidden>Weighted</h1>
+                <section id="dfspath"></section>
+            </div>
+        </section>
         <style>
             hr {
-                height: 1px;
-                width: 50%;
+                height: 100%;
+                width: 2px;
+                margin: 0 15px;
+            }
+
+            h1 {
+                margin-bottom: 15px;
+            }
+
+            h1,
+            h4 {
+                text-align: center;
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .one {
+                border-right: 2px solid red;
+                padding-right: 30px;
+                margin-right: 30px;
             }
         </style>
-        <section id="dfspath"></section>
     </section>
     <%- include('partials/footer') %>

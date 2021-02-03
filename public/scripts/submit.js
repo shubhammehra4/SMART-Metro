@@ -13,12 +13,14 @@ $(document).ready(function () {
                     bfs = bfs.split(",");
                     let dijktra = res.dijktraRoute;
                     dijktra = dijktra.split(",");
-                    let printBfs = bfs.map((n) => `<h1>${n}</h1>`);
-                    let printDijktra = dijktra.map((n) => `<h1>${n}</h1>`);
+                    let printBfs = bfs.map((n) => `<h4>${n}</h4><h4>🔻</h4>`);
+                    let printDijktra = dijktra.map(
+                        (n) => `<h4>${n}</h4><h4>🔻</h4>`
+                    );
 
                     $("#bfspath").html(printBfs);
                     $("#dfspath").html(printDijktra);
-                    $("#sep").show();
+                    $(".hid").show();
                 })
                 .catch((err) => {
                     console.log(err);
