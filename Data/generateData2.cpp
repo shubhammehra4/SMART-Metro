@@ -209,6 +209,8 @@ int main()
 		// 		cerr << p << " ";
 		// 	cerr << endl;
 		// }
+		cout << "Station Name" << "," << "Day" << "," << "Time" << "," << "Population" << "," << "Weather" << endl;
+
 		fab(0, 70, k)
 		{
 			fab(0, 7, p)
@@ -320,7 +322,7 @@ int main()
 						value = max(value, uniform_int_distribution<int>(50, 58)(rng));
 						value = min(value, uniform_int_distribution<int>(550, 570)(rng));
 					}
-					cout << s << " " << week[p] << " " << time[j] << " " << value << " " << weather[pos] << endl;
+					cout << s << "," << week[p] << "," << time[j] << "," << value << "," << weather[pos] << endl;
 				}
 
 			}
