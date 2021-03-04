@@ -1,5 +1,5 @@
 const express = require("express"),
-    bodyParser = require("body-parser"),
+    path = require("path"),
     dotenv = require("dotenv"),
     spawn = require("child_process").spawn,
     app = express();
@@ -10,9 +10,10 @@ const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || "DEV";
 
 app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.set("views", path.join(__dirname, "/views"));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", (req, res) => {
     res.render("landing");
