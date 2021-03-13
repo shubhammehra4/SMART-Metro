@@ -23,6 +23,10 @@ app.get("/home", (req, res) => {
     res.render("home", { stationNames: stationNames });
 });
 
+app.get("/homeDev", (req, res) => {
+    res.render("homeDev", { stationNames: stationNames });
+});
+
 app.get("/map", (req, res) => {
     res.render("map");
 });
@@ -65,6 +69,11 @@ app.post("/findpath", (req, res) => {
             err,
         });
     }
+});
+
+app.post("/findpath/dev", (req, res) => {
+    let { start, end, day, time, weather } = req.body;
+    res.json({ message: "Ok" });
 });
 
 app.listen(PORT, function () {

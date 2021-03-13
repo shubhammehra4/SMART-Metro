@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+<script src="/scripts/submitDev.js" defer></script>
+<section class="home">
+    <section class="hero">Catch Phrase or Something</section>
+    <form>
+        <select required name="start" id="start">
+            <option value="" hidden>Source</option>
+            <% stationNames.map((s)=> { %>
+            <option value="<%=s %>"><%= s %></option>
+            <% }) %>
+        </select>
+        <select required name="end" id="end">
+            <option value="" hidden>Destination</option>
+            <% stationNames.map((s)=> { %>
+            <option value="<%=s %>"><%= s %></option>
+            <% }) %>
+        </select>
+        <select name="day" id="day">
+            <option value="" hidden>Day</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+        <select name="time" id="time">
+            <option value="" hidden>Time</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="1:00">01:00 PM</option>
+            <option value="2:00">02:00 PM</option>
+            <option value="3:00">03:00 PM</option>
+            <option value="4:00">04:00 PM</option>
+            <option value="5:00">05:00 PM</option>
+            <option value="6:00">06:00 PM</option>
+            <option value="7:00">07:00 PM</option>
+            <option value="8:00">08:00 PM</option>
+        </select>
+        <select name="weather" id="weather">
+            <option value="" hidden>Weather</option>
+            <option value="Sunny">Sunny</option>
+            <option value="Cool">Cool</option>
+            <option value="Rainy">Rainy</option>
+            <option value="Thunderstorm">Thunderstorm</option>
+        </select>
+        <button id="submit" type="button" class="btn">Find Route</button>
+    </form>
+    <section class="flex">
+        <div class="one">
+            <h1 class="hid" hidden>Unweighted</h1>
+            <section id="bfspath"></section>
+        </div>
+        <div>
+            <h1 class="hid" hidden>Weighted</h1>
+            <section id="dfspath"></section>
+        </div>
+    </section>
+    <style>
+        hr {
+            height: 100%;
+            width: 2px;
+            margin: 0 15px;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        h1,
+        h4 {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .one {
+            border-right: 2px solid red;
+            padding-right: 30px;
+            margin-right: 30px;
+        }
+    </style>
+</section>
+<%- include('partials/footer') %>
