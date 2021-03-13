@@ -7,6 +7,7 @@ $(document).ready(function () {
         let weather = $("#weather").val();
         let body = { start, end, day, time, weather };
         if (start && end) {
+            $(".loader").fadeIn();
             fetch(`/findpath/dev`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -23,7 +24,7 @@ $(document).ready(function () {
                     //     let printDijktra = dijktra.map(
                     //         (n) => `<h4>${n}</h4><h4>🔻</h4>`
                     //     );
-
+                    $(".loader").fadeOut();
                     //     $("#bfspath").html(printBfs);
                     //     $("#dfspath").html(printDijktra);
                     //     $(".hid").show();

@@ -114,10 +114,10 @@ select {
         -9px -9px 16px rgba(255, 255, 255, 0.5);
     &:focus {
         background-color: rgba(235, 235, 235, 0.8);
-        // border: 1px solid gray;
     }
 }
 .btn {
+    display: flex;
     cursor: pointer;
     margin: 1rem auto;
     padding: 1rem 2rem;
@@ -127,6 +127,10 @@ select {
     background-color: rgb(236, 236, 236);
     transition: box-shadow 0.5s ease-out;
 
+    svg {
+        display: none;
+        margin-right: 10px;
+    }
     &:hover {
         background-color: rgb(218, 218, 218);
         box-shadow: 4px 4px 10px rgba(163, 177, 198, 0.6),

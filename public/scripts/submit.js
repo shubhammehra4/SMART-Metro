@@ -3,6 +3,7 @@ $(document).ready(function () {
         let start = $("#start").val();
         let end = $("#end").val();
         if (start && end) {
+            $(".loader").fadeIn();
             fetch(`/findpath?start=${start}&end=${end}`, {
                 method: "POST",
             })
@@ -18,6 +19,7 @@ $(document).ready(function () {
                         (n) => `<h4>${n}</h4><h4>🔻</h4>`
                     );
 
+                    $(".loader").fadeOut();
                     $("#bfspath").html(printBfs);
                     $("#dfspath").html(printDijktra);
                     $(".hid").show();

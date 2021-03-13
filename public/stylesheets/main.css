@@ -173,6 +173,9 @@ select:focus {
 }
 
 .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   cursor: pointer;
   margin: 1rem auto;
   padding: 1rem 2rem;
@@ -184,6 +187,11 @@ select:focus {
   transition: -webkit-box-shadow 0.5s ease-out;
   transition: box-shadow 0.5s ease-out;
   transition: box-shadow 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
+}
+
+.btn svg {
+  display: none;
+  margin-right: 10px;
 }
 
 .btn:hover {
