@@ -1,63 +1,57 @@
 <%- include('partials/header') %>
-    <script src="/scripts/submit.js" defer></script>
-    <section class="home">
-        <section class="hero">
-            Catch Phrase or Something
-        </section>
-        <form>
-            <select required name="start" id="start">
-                <option value="" hidden>Source</option>
-                <% stationNames.map((s)=> { %>
-                    <option value="<%=s %>">
-                        <%= s %>
-                    </option>
-                    <% }) %>
-            </select>
-            <select required name="end" id="end">
-                <option value="" hidden>Destination</option>
-                <% stationNames.map((s)=> { %>
-                    <option value="<%=s %>">
-                        <%= s %>
-                    </option>
-                    <% }) %>
-            </select>
-            <button id="submit" type="button" class="btn">Find Route</button>
-        </form>
-        <section class="flex">
-            <div class="one">
-                <h1 class="hid" hidden>Unweighted</h1>
-                <section id="bfspath"></section>
-            </div>
-            <div>
-                <h1 class="hid" hidden>Weighted</h1>
-                <section id="dfspath"></section>
-            </div>
-        </section>
-        <style>
-            hr {
-                height: 100%;
-                width: 2px;
-                margin: 0 15px;
-            }
-
-            h1 {
-                margin-bottom: 15px;
-            }
-
-            h1,
-            h4 {
-                text-align: center;
-            }
-
-            .flex {
-                display: flex;
-            }
-
-            .one {
-                border-right: 2px solid red;
-                padding-right: 30px;
-                margin-right: 30px;
-            }
-        </style>
+<script src="/scripts/submit.js" defer></script>
+<section class="home">
+    <section class="hero">Catch Phrase or Something</section>
+    <form>
+        <select required name="start" id="start">
+            <option value="" hidden>Source</option>
+            <% stationNames.map((s)=> { %>
+            <option value="<%=s %>"><%= s %></option>
+            <% }) %>
+        </select>
+        <select required name="end" id="end">
+            <option value="" hidden>Destination</option>
+            <% stationNames.map((s)=> { %>
+            <option value="<%=s %>"><%= s %></option>
+            <% }) %>
+        </select>
+        <button id="submit" type="button" class="btn">Find Route</button>
+    </form>
+    <section class="flex">
+        <div class="one">
+            <h1 class="hid" hidden>Unweighted</h1>
+            <section id="bfspath"></section>
+        </div>
+        <div>
+            <h1 class="hid" hidden>Weighted</h1>
+            <section id="dfspath"></section>
+        </div>
     </section>
-    <%- include('partials/footer') %>
+    <style>
+        hr {
+            height: 100%;
+            width: 2px;
+            margin: 0 15px;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        h1,
+        h4 {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .one {
+            border-right: 2px solid red;
+            padding-right: 30px;
+            margin-right: 30px;
+        }
+    </style>
+</section>
+<%- include('partials/footer') %>
