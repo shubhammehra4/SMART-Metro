@@ -81,6 +81,29 @@ app.post("/findpath", (req, res) => {
 
 app.post("/findpath/dev", (req, res) => {
     let { start, end, day, time, weather } = req.body;
+
+    var process = spawn("python", [
+        "./pathFinder/getCrowd.py",
+        start,
+        parseInt(time),
+        day,
+        weather,
+    ]);
+    process.stderr.on("data", (err) => {
+        console.log(`Error: ${err}`);
+    });
+
+    process.stdout.on("data", (data) => {
+        result = data.toString();
+        console.log(result);
+        // return res.status(200).json(resData);
+    });
+
+    process.on("close", (code) => {
+        console.log(
+            `Child Process (getPaths.py) close all stdio with code ${code}`
+        );
+    });
     res.json({ message: "Ok" });
 });
 
