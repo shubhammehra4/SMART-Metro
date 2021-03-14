@@ -63,7 +63,7 @@ app.post("/findpath", (req, res) => {
             resData.Dist = result[3];
             resData.dijktraRoute = result[5];
 
-            return res.status(200).json(resData);
+            return res.json(resData);
         });
 
         process.on("close", (code) => {
