@@ -62,7 +62,7 @@ app.post("/findpath", (req, res) => {
             resData.bfsRoute = result[1];
             resData.Dist = result[3];
             resData.dijktraRoute = result[5];
-            res.json(resData);
+            return res.status(200).json(resData);
         });
 
         process.on("close", (code) => {
@@ -70,7 +70,6 @@ app.post("/findpath", (req, res) => {
                 `Child Process (getPaths.py) close all stdio with code ${code}`
             );
         });
-        return;
     } catch (err) {
         return res.status(500).json({
             message: "Oops Something went wrong!",
