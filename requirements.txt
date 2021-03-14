@@ -1,4 +1,4 @@
 numpy
 sklearn
-pickle
+pickle-mixin
 
