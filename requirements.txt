@@ -1,5 +1,5 @@
 numpy
-sklearn==0.23.2
+sklearn
 json
 pickle
 
