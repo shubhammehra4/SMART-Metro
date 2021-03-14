@@ -2,56 +2,36 @@ import numpy as np
 import pickle
 import os
 import sklearn
-path=os.path.dirname(__file__)+'/RFR_Model.pkl'
-with open(
-        path,
-        'rb') as file:
+
+path = os.path.dirname(__file__) + '/RFR_Model.pkl'
+with open(path, 'rb') as file:
     model = pickle.load(file)
 #print(model)
-days = [
-    'Day', 'FRIDAY', 'MONDAY', 'SATURDAY', 'SUNDAY', 'THURSDAY', 'TUESDAY',
-    'WEDNESDAY'
-]
-weather = ['Cool', 'Rainy', 'Sunny', 'ThunderStorm', 'Weather']
+days = ['FRIDAY', 'MONDAY', 'SATURDAY', 'SUNDAY', 'THURSDAY', 'TUESDAY',
+    'WEDNESDAY']
+
+weather = ['Cool', 'Rainy', 'Sunny', 'ThunderStorm']
 arr = np.array([1, 6, 10, 2])
 res = model.predict(arr.reshape(-1, 4))
 stations = [
     'AIIMS', 'Adarsh Nagar', 'Akshardham', 'Anand Vihar', 'Arjan Garh',
-    'Ashok Park Main', 'Azadpur', 'Badarpur', 'Barakhambha Road',
-    'Botanical Garden', 'Central Secretariat', 'Chandni Chowk', 'Chawri Bazar',
-    'Chhatarpur', 'Civil Lines', 'Delhi Aerocity', 'Dhaula Kuan',
-    'Dilshad Garden', 'Dwarka', 'Dwarka Morh', 'Dwarka Sector 10',
-    'Dwarka Sector 11', 'Dwarka Sector 12', 'Dwarka Sector 13',
-    'Dwarka Sector 14', 'Dwarka Sector 21', 'Dwarka Sector 8',
-    'Dwarka Sector 9', 'GTB Nagar', 'Ghitorni', 'Govind Puri', 'Green Park',
-    'Guru Dronacharya', 'HUDA City Centre', 'Hauz Khas', 'IFFCO Chowk', 'INA',
-    'Inderlok', 'Indira Gandhi International Airport', 'Indraprastha',
-    'Jahangirpuri', 'Janakpuri East', 'Janakpuri West', 'Jangpura',
-    'Jasola Apollo', 'Jawaharlal Nehru Stadium', 'Jhandewalan', 'Jhilmil',
-    'Jor Bagh', 'Kailash Colony', 'Kalkaji Mandir', 'Kanhiya Nagar',
-    'Karkarduma', 'Karol Bagh', 'Kashmere Gate', 'Kaushambi', 'Keshav Puram',
-    'Khan Market', 'Kirti Nagar', 'Kohat Enclave', 'Lajpat Nagar',
-    'Laxmi Nagar', 'MG Road', 'Madipur', 'Malviya Nagar', 'Mandi House',
-    'Mansarovar Park', 'Mayur Vihar -I', 'Mayur Vihar Extension', 'Model Town',
-    'Mohan Estate', 'Moolchand', 'Moti Nagar', 'Mundka', 'Nangloi',
-    'Nangloi Railway station', 'Nawada', 'Nehru Place', 'Netaji Subhash Place',
-    'New Ashok Nagar', 'New Delhi', 'Nirman Vihar', 'Noida City Centre',
-    'Noida Golf Course', 'Noida Sector 15', 'Noida Sector 16',
-    'Noida Sector 18', 'Okhla', 'Paschim Vihar East', 'Paschim Vihar West',
-    'Patel Chowk', 'Patel Nagar', 'Peera Garhi', 'Pitam Pura',
-    'Pragati Maidan', 'Pratap Nagar', 'Preet Vihar', 'Pul Bangash',
-    'Punjabi Bagh East', 'Qutab Minar', 'Race Course', 'Rajdhani Park',
-    'Rajendra Place', 'Rajiv Chowk', 'Rajouri Garden',
-    'Ramakrishna Ashram Marg', 'Ramesh Nagar', 'Rithala', 'Rohini East',
-    'Rohini West', 'Saket', 'Sarita Vihar', 'Satguru Ramsingh Marg',
-    'Seelampur', 'Shadipur', 'Shahdara', 'Shastri Nagar', 'Shastri Park',
-    'Shivaji Park', 'Shivaji Stadium', 'Sikandarpur', 'Station Name',
-    'Subhash Nagar', 'Sultanpur', 'Surajmal Stadium', 'Tagore Garden',
-    'Tilak Nagar', 'Tis Hazari', 'Tughlakabad', 'Udyog Bhawan', 'Udyog Nagar',
-    'Uttam Nagar East', 'Uttam Nagar West', 'Vaishali', 'Vidhan Sabha',
-    'Vishwa Vidyalaya', 'Welcome', 'Yamuna Bank'
+    'Ashok Park Main', 'Azadpur', 'Badarpur Border', 'Botanical Garden',
+    'Central Secretariat', 'Chandni Chowk', 'Chawri Bazar', 'Chhatarpur',
+    'Civil Lines', 'Dwarka', 'GTB Nagar', 'Ghitorni', 'Green Park',
+    'Guru Dronacharya', 'HUDA City Centre', 'Haiderpur', 'Hauz Khas',
+    'IFFCO Chowk', 'IITD', 'INA', 'Inderlok', 'Jahangirpuri', 'Janakpuri West',
+    'Jor Bagh', 'Kalkaji Mandir', 'Karkarduma', 'Kashmere Gate', 'Kaushambi',
+    'Kirti Nagar', 'Lajpat Nagar', 'Laxmi Nagar', 'Lok Kalyan Marg', 'MG Road',
+    'Mandi House', 'Mayur Vihar -I', 'Mayur Vihar Extension', 'Model Town',
+    'Munirka', 'Netaji Subhash Place', 'New Ashok Nagar', 'New Delhi',
+    'Nirman Vihar', 'Noida City Centre', 'Noida Golf Course',
+    'Noida Sector 15', 'Noida Sector 16', 'Noida Sector 18', 'Patel Chowk',
+    'Preet Vihar', 'Qutab Minar', 'Rajiv Chowk', 'Rithala',
+    'Rohini Sector 18-19', 'Saket', 'Samaypur Badli', 'Shahdara',
+    'Sikandarpur', 'Sultanpur', 'Surajmal Stadium', 'Terminal 1 IGI Airport',
+    'Udyog Bhawan', 'Vaishali', 'Vidhan Sabha', 'Vishwa Vidyalaya', 'Welcome',
+    'Yamuna Bank'
 ]
-
 
 # for i in range(len(stations)):
 #     ls = list(stations[i].split(","))
@@ -86,7 +66,8 @@ def distance(lat1, lat2, lon1, lon2):
 
     return (c * r)
 
-path2=os.path.dirname(__file__)+'/stationJS.json'
+
+path2 = os.path.dirname(__file__) + '/stationJS.json'
 with open(path2) as f:
     data = json.load(f)
 
@@ -120,7 +101,6 @@ def djisktras(src, dest, v):
         if (dist[p[1]] != p[0]):
             continue
         #print("dfgdf")
-
 
         for i in v[p[1]]:
             #print('src',p[1],i,v[p[1]][i])
@@ -231,20 +211,20 @@ for i in stations:
 for i in data:
     temp = data[i]
     y = i
-    if(i not in dict):
-        continue
+    # if (i not in dict):
+    #     continue
     lat1 = temp['details']['latitude']
     longi1 = temp['details']['longitude']
     for j in temp['connected']:
         x = j
-        if(x not in dict):
-            continue
+        # if (x not in dict):
+        #     continue
         if (y not in v[x]):
             lat2 = data[j]['details']['latitude']
-            longi2 = data[j]['details']['longitude'] 
+            longi2 = data[j]['details']['longitude']
             #print(distance(lat1, lat2, longi1, longi2)*600,(crowd[x]+crowd[y]) * 3)
-            v[x][y] = distance(lat1, lat2, longi1, longi2)*600 + (
-                (crowd[x]+crowd[y]) * 3)
+            v[x][y] = distance(lat1, lat2, longi1, longi2) * 600 + (
+                (crowd[x] + crowd[y]) * 3)
             v[y][x] = v[x][y]
 
 path = []
