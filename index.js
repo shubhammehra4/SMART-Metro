@@ -35,13 +35,13 @@ app.get("/about", (req, res) => {
     res.render("about");
 });
 
-app.post("/findpath", (req, res) => {
+app.post("/findpath", async (req, res) => {
     try {
         let result,
             resData = {};
         const { start, end } = req.query;
 
-        var process = spawn("python", [
+        var process = await spawn("python", [
             "./pathFinder/findPath.py",
             start,
             end,
