@@ -14,7 +14,22 @@ $(document).ready(function () {
                     bfs = bfs.split(",");
                     let dijktra = res.dijktraRoute;
                     dijktra = dijktra.split(",");
-                    let printBfs = bfs.map((n) => `<p>${n}</p><p>🔻</p>`);
+                    let printBfs = bfs.map((n, i) => {
+                        if (i < bfs.length - 1) {
+                            let d = details[n].details;
+                            let line = d.line.join(", ");
+                            let res = "";
+                            if (i === bfs.length - 2) {
+                                res += `<div class="station">
+                                <h4>${n} (${line})</h4></div>`;
+                            } else {
+                                res = `<div class="station">
+                            <h4>${n} (${line})</h4><h4>🔻</h4></div>`;
+                            }
+                            return res;
+                        }
+                        return;
+                    });
                     let printDijktra = dijktra.map((n, i) => {
                         if (i < dijktra.length - 1) {
                             let d = details[n].details;
@@ -22,7 +37,7 @@ $(document).ready(function () {
                             let colors = d.line.map(
                                 (l) => "." + l.split(" ")[0]
                             );
-                            console.log(colors);
+                            // console.log(colors);
                             let res = "";
                             if (i === dijktra.length - 2) {
                                 res += `<div class="station">

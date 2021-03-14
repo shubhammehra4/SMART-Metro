@@ -8,12 +8,6 @@
             <option value="<%=s %>"><%= s %></option>
             <% }) %>
         </select>
-        <select required name="end" id="end">
-            <option value="" hidden>Destination</option>
-            <% stationNames.map((s)=> { %>
-            <option value="<%=s %>"><%= s %></option>
-            <% }) %>
-        </select>
         <select name="day" id="day">
             <option value="" hidden>Day</option>
             <option value="MONDAY">Monday</option>
@@ -78,14 +72,7 @@
         </button>
     </form>
     <section class="flex">
-        <div class="one">
-            <h1 class="hid" hidden>Unweighted</h1>
-            <section id="bfspath"></section>
-        </div>
-        <div>
-            <h1 class="hid" hidden>Weighted</h1>
-            <section id="dfspath"></section>
-        </div>
+        <div id="crowd"></div>
     </section>
     <style>
         hr {

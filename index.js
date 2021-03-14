@@ -35,51 +35,51 @@ app.get("/about", (req, res) => {
     res.render("about");
 });
 
-app.post("/findpath", async (req, res) => {
-    try {
+app.post("/findpath", (req, res) => {
+    // try {
+    const { start, end } = req.query;
+
+    var process = spawn("python", [
+        "./pathFinder/findPath.py",
+        start,
+        end,
+        10,
+        "MONDAY",
+        "Sunny",
+    ]);
+
+    process.stderr.on("data", (err) => {
+        console.log(`Error: ${err}`);
+    });
+
+    process.stdout.on("data", (data) => {
         let result,
             resData = {};
-        const { start, end } = req.query;
+        result = data.toString();
+        console.log(result);
+        result = result.split("\r\n");
 
-        var process = await spawn("python", [
-            "./pathFinder/findPath.py",
-            start,
-            end,
-            10,
-            "MONDAY",
-            "Sunny",
-        ]);
+        resData.bfsRoute = result[1];
+        resData.Dist = result[3];
+        resData.dijktraRoute = result[5];
+        res.status(200).json(resData);
+    });
 
-        process.stderr.on("data", (err) => {
-            console.log(`Error: ${err}`);
-        });
-
-        process.stdout.on("data", (data) => {
-            result = data.toString();
-            console.log(result);
-            result = result.split("\r\n");
-
-            resData.bfsRoute = result[1];
-            resData.Dist = result[3];
-            resData.dijktraRoute = result[5];
-            return res.status(200).json(resData);
-        });
-
-        process.on("close", (code) => {
-            console.log(
-                `Child Process (getPaths.py) close all stdio with code ${code}`
-            );
-        });
-    } catch (err) {
-        return res.status(500).json({
-            message: "Oops Something went wrong!",
-            err,
-        });
-    }
+    process.on("close", (code) => {
+        console.log(
+            `Child Process (getPaths.py) close all stdio with code ${code}`
+        );
+    });
+    // } catch (err) {
+    //     return res.status(500).json({
+    //         message: "Oops Something went wrong!",
+    //         err,
+    //     });
+    // }
 });
 
 app.post("/findpath/dev", (req, res) => {
-    let { start, end, day, time, weather } = req.body;
+    let { start, day, time, weather } = req.body;
 
     var process = spawn("python", [
         "./pathFinder/getCrowd.py",
@@ -95,7 +95,7 @@ app.post("/findpath/dev", (req, res) => {
     process.stdout.on("data", (data) => {
         result = data.toString();
         console.log(result);
-        // return res.status(200).json(resData);
+        return res.status(200).json(result);
     });
 
     process.on("close", (code) => {
@@ -103,7 +103,6 @@ app.post("/findpath/dev", (req, res) => {
             `Child Process (getPaths.py) close all stdio with code ${code}`
         );
     });
-    res.json({ message: "Ok" });
 });
 
 app.listen(PORT, function () {

@@ -1,12 +1,11 @@
 $(document).ready(function () {
     $("#submit").click(function () {
         let start = $("#start").val();
-        let end = $("#end").val();
         let day = $("#day").val();
         let time = $("#time").val();
         let weather = $("#weather").val();
-        let body = { start, end, day, time, weather };
-        if (start && end) {
+        let body = { start, day, time, weather };
+        if (start) {
             $(".loader").fadeIn();
             fetch(`/findpath/dev`, {
                 method: "POST",
@@ -16,18 +15,10 @@ $(document).ready(function () {
                 .then((res) => res.json())
                 .then((res) => {
                     console.log(res);
-                    //     let bfs = res.bfsRoute;
-                    //     bfs = bfs.split(",");
-                    //     let dijktra = res.dijktraRoute;
-                    //     dijktra = dijktra.split(",");
-                    //     let printBfs = bfs.map((n) => `<h4>${n}</h4><h4>🔻</h4>`);
-                    //     let printDijktra = dijktra.map(
-                    //         (n) => `<h4>${n}</h4><h4>🔻</h4>`
-                    //     );
+                    let crowd = $("#crowd");
+
                     $(".loader").fadeOut();
-                    //     $("#bfspath").html(printBfs);
-                    //     $("#dfspath").html(printDijktra);
-                    //     $(".hid").show();
+                    crowd.html(res);
                 })
                 .catch((err) => {
                     console.log("here");
