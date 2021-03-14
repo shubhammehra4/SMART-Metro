@@ -117,7 +117,7 @@ def djisktras(src, dest, v):
         x = par[x]
     path.append(src)
     path = path[-1::-1]
-    #print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' M')
+    print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' M')
     print("Path using Djikstra's Algorithm in the weighted graph")
     for i in path:
         print(i, end=',')

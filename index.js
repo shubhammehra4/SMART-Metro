@@ -41,7 +41,14 @@ app.post("/findpath", (req, res) => {
             resData = {};
         const { start, end } = req.query;
 
-        var process = spawn("python", ["./pathFinder/getPaths.py", start, end]);
+        var process = spawn("python", [
+            "./pathFinder/findPath.py",
+            start,
+            end,
+            10,
+            "MONDAY",
+            "Sunny",
+        ]);
 
         process.stderr.on("data", (err) => {
             console.log(`Error: ${err}`);
@@ -49,6 +56,7 @@ app.post("/findpath", (req, res) => {
 
         process.stdout.on("data", (data) => {
             result = data.toString();
+            console.log(result);
             result = result.split("\r\n");
 
             resData.bfsRoute = result[1];
