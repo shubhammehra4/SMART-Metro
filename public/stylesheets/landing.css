@@ -11,7 +11,7 @@ body {
 }
 
 .map {
-  height: 50vh;
+  height: 55vh;
   width: 50vw;
 }
 
@@ -101,6 +101,7 @@ header {
 header h1 {
   width: 100%;
   font-family: "Quicksand", sans-serif;
+  font-weight: 900;
 }
 
 main {
