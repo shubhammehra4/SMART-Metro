@@ -87,6 +87,7 @@ int main()
 
 
 
+	cout << "Station Name" << "," << "Day" << "," << "Time" << "," << "Population" << "," << "Weather" << endl;
 
 
 	fab(0, n, i)
@@ -209,8 +210,6 @@ int main()
 		// 		cerr << p << " ";
 		// 	cerr << endl;
 		// }
-		cout << "Station Name" << "," << "Day" << "," << "Time" << "," << "Population" << "," << "Weather" << endl;
-
 		fab(0, 70, k)
 		{
 			fab(0, 7, p)
