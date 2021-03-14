@@ -1,8 +1,10 @@
 import numpy as np
 import pickle
+import os
 import sklearn
+path=os.path.dirname(__file__)+'/RFR_Model.pkl'
 with open(
-        "C:/Users/Nishit Sharma/Desktop/summer proj/SMART-Metro-master/pathFinder/RFR_Model.pkl",
+        path,
         'rb') as file:
     model = pickle.load(file)
 #print(model)
@@ -50,6 +52,7 @@ stations = [
     'Vishwa Vidyalaya', 'Welcome', 'Yamuna Bank'
 ]
 
+
 # for i in range(len(stations)):
 #     ls = list(stations[i].split(","))
 #     stations[i] = ' '.join(ls)
@@ -83,8 +86,8 @@ def distance(lat1, lat2, lon1, lon2):
 
     return (c * r)
 
-
-with open('stationJS.json') as f:
+path2=os.path.dirname(__file__)+'/stationJS.json'
+with open(path2) as f:
     data = json.load(f)
 
 # with open("stationNames.txt", "w") as f1:
@@ -134,7 +137,7 @@ def djisktras(src, dest, v):
         x = par[x]
     path.append(src)
     path = path[-1::-1]
-    print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' KM')
+    #print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' M')
     print("Path using Djikstra's Algorithm in the weighted graph")
     for i in path:
         print(i, end=',')
@@ -211,9 +214,9 @@ for i in range(len(weather)):
 
 src = sys.argv[1]
 dest = sys.argv[2]
-currWeather = sys.argv[5]
-currDay = sys.argv[4]
 currTime = sys.argv[3]
+currDay = sys.argv[4]
+currWeather = sys.argv[5]
 
 for i in stations:
     v[i] = {}
@@ -239,9 +242,9 @@ for i in data:
         if (y not in v[x]):
             lat2 = data[j]['details']['latitude']
             longi2 = data[j]['details']['longitude'] 
-            print(x,y)
-            v[x][y] = distance(lat1, lat2, longi1, longi2) + (
-                (crowd[x]+crowd[y]) * 5)
+            #print(distance(lat1, lat2, longi1, longi2)*600,(crowd[x]+crowd[y]) * 3)
+            v[x][y] = distance(lat1, lat2, longi1, longi2)*600 + (
+                (crowd[x]+crowd[y]) * 3)
             v[y][x] = v[x][y]
 
 path = []
