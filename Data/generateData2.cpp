@@ -86,7 +86,6 @@ int main()
 
 
 
-	cout << "Station Name" << "," << "Day" << "," << "Time" << "," << "Population" << "," << "Weather" << endl;
 
 
 
@@ -108,7 +107,7 @@ int main()
 
 
 
-		fab(0, 7, i)
+		fab(0,7, i)
 		{
 			vector<int> v;
 			int l = 0, r = 2e3;
@@ -210,14 +209,15 @@ int main()
 		// 		cerr << p << " ";
 		// 	cerr << endl;
 		// }
+		cout << "Station Name" << "," << "Day" << "," << "Time" << "," << "Population" << "," << "Weather" << endl;
 
-		fab(0, 45, k)
+		fab(0, 70, k)
 		{
 			fab(0, 7, p)
 			{
 
 				int pos = uniform_int_distribution<int>(0, 3)(rng);
-				fab(0, 10, j)
+				fab(0, 11, j)
 				{
 
 					int variation = uniform_int_distribution<int>(0, 100)(rng);
