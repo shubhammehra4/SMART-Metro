@@ -6,6 +6,7 @@ $(document).ready(function () {
             $(".loader").fadeIn();
             fetch(`/findpath?start=${start}&end=${end}`, {
                 method: "POST",
+                headers: { "Content-Type": "application/json" },
             })
                 .then((res) => res.json())
                 .then((res) => {
