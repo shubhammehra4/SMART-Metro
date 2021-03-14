@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-    res.render("home", { stationNames: stationNames });
+    res.render("home", { stationNames });
 });
 
 app.get("/homeDev", (req, res) => {

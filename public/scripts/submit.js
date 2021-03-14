@@ -14,11 +14,32 @@ $(document).ready(function () {
                     bfs = bfs.split(",");
                     let dijktra = res.dijktraRoute;
                     dijktra = dijktra.split(",");
-                    let printBfs = bfs.map((n) => `<h4>${n}</h4><h4>🔻</h4>`);
-                    let printDijktra = dijktra.map(
-                        (n) => `<h4>${n}</h4><h4>🔻</h4>`
-                    );
-
+                    let printBfs = bfs.map((n) => `<p>${n}</p><p>🔻</p>`);
+                    let printDijktra = dijktra.map((n, i) => {
+                        if (i < dijktra.length - 1) {
+                            let d = details[n].details;
+                            let line = d.line.join(", ");
+                            let colors = d.line.map(
+                                (l) => "." + l.split(" ")[0]
+                            );
+                            console.log(colors);
+                            let res = "";
+                            if (i === dijktra.length - 2) {
+                                res += `<div class="station">
+                                <h4>${n} (${line})</h4></div>`;
+                            } else {
+                                res = `<div class="station">
+                            <h4>${n} (${line})</h4><h4>🔻</h4></div>`;
+                            }
+                            return res;
+                        }
+                        return;
+                    });
+                    let tablinks = document.getElementsByClassName("tablink");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].style.display = "block";
+                    }
+                    document.getElementById("defaultOpen").click();
                     $(".loader").fadeOut();
                     $("#bfspath").html(printBfs);
                     $("#dfspath").html(printDijktra);

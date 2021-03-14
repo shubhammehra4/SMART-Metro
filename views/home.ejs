@@ -1,7 +1,8 @@
 <%- include('partials/header') %>
+<script src="/scripts/stationDetails.js" defer></script>
+<script src="/scripts/tabs.js" defer></script>
 <script src="/scripts/submit.js" defer></script>
 <section class="home">
-    <section class="hero">Catch Phrase or Something</section>
     <form>
         <select required name="start" id="start">
             <option value="" hidden>Source</option>
@@ -47,15 +48,27 @@
             Find Route
         </button>
     </form>
+    <div class="flex">
+    <button
+            class="tablink"
+            onclick="openPage('dfs', this)"
+            id="defaultOpen"
+        >
+            Path 1
+        </button>
+        <button class="tablink" onclick="openPage('bfs', this)">Path 2</button>
+    </div>
     <section class="flex">
-        <div class="one">
-            <h1 class="hid" hidden>Unweighted</h1>
-            <section id="bfspath"></section>
-        </div>
-        <div>
-            <h1 class="hid" hidden>Weighted</h1>
+        
+        <div id="dfs" class="tabcontent">
+            <h1 class="hid" hidden></h1>
             <section id="dfspath"></section>
         </div>
+        <div id="bfs" class="tabcontent">
+            <h1 class="hid" hidden></h1>
+            <section id="bfspath"></section>
+        </div>
+       
     </section>
     <style>
         hr {
@@ -63,11 +76,9 @@
             width: 2px;
             margin: 0 15px;
         }
-
-        h1 {
-            margin-bottom: 15px;
+        h1{
+            font-size: xx-large;
         }
-
         h1,
         h4 {
             text-align: center;
@@ -75,12 +86,6 @@
 
         .flex {
             display: flex;
-        }
-
-        .one {
-            border-right: 2px solid red;
-            padding-right: 30px;
-            margin-right: 30px;
         }
     </style>
 </section>
