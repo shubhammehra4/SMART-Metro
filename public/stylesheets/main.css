@@ -90,10 +90,9 @@ header nav a {
   }
 }
 
-section.home {
+section.home, .about, .map {
   margin-top: 10rem;
   opacity: 0;
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -206,9 +205,61 @@ select:focus {
           box-shadow: 4px 4px 10px rgba(163, 177, 198, 0.6), -4px -4px 10px rgba(255, 255, 255, 0.5);
 }
 
-.map,
 .about {
-  margin-top: 10rem;
+  text-align: center;
+}
+
+.about .name {
+  font-size: 4rem;
+}
+
+.about .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 80%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about .row .card {
+  -webkit-box-shadow: 4px 4px 16px rgba(163, 177, 198, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.4);
+          box-shadow: 4px 4px 16px rgba(163, 177, 198, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.4);
+  margin: 0.1rem 1rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
+}
+
+.about .row .card:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.about hr {
+  margin: 0.5rem 0;
+  width: 75%;
+}
+
+.about .team {
+  text-align: center;
+  list-style: none;
+}
+
+.about .team li {
+  cursor: pointer;
+}
+
+.about .team li:hover {
+  color: blueviolet;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  font-weight: 600;
 }
 
 @media (max-width: 800px) {
@@ -223,6 +274,15 @@ select:focus {
   }
   form {
     width: 50vw;
+  }
+  .row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .about .name {
+    font-size: xx-large;
   }
 }
 
