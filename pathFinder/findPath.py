@@ -122,6 +122,11 @@ def djisktras(src, dest, v):
     for i in path:
         print(i, end=',')
 
+def dynamicWeight(v):
+    v["Mandi House"]["Rajiv Chowk"] = 100000;
+    v["Rajiv Chowk"]["Mandi House"] = 100000;
+ 
+
 
 def getShortestPath(src, dest, v, vis):
     if (src not in vis or dest not in vis):
@@ -228,6 +233,7 @@ for i in data:
             v[y][x] = v[x][y]
 
 path = []
+dynamicWeight(v)
 
 getShortestPath(src, dest, v, vis)
 print()
