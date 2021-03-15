@@ -37,6 +37,7 @@ app.get("/about", (req, res) => {
 
 app.post("/findpath", (req, res) => {
     // try {
+    var resData = {};
     const { start, end } = req.query;
 
     var process = spawn("python", [
@@ -53,8 +54,7 @@ app.post("/findpath", (req, res) => {
     });
 
     process.stdout.on("data", (data) => {
-        let result,
-            resData = {};
+        let result;
         result = data.toString();
         console.log(result);
         result = result.split("\r\n");
@@ -62,14 +62,14 @@ app.post("/findpath", (req, res) => {
         resData.bfsRoute = result[1];
         resData.Dist = result[3];
         resData.dijktraRoute = result[5];
-        // return res.send(resData);
+        return res.json(resData);
     });
 
-    process.on("close", (code) => {
-        console.log(
-            `Child Process (getPaths.py) close all stdio with code ${code}`
-        );
-    });
+    // process.on("close", (code) => {
+    //     console.log(
+    //         `Child Process (getPaths.py) close all stdio with code ${code}`
+    //     );
+    // });
     // } catch (err) {
     //     return res.status(500).json({
     //         message: "Oops Something went wrong!",
