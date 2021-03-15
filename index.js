@@ -40,14 +40,13 @@ app.post("/findpath", (req, res) => {
     var resData = {};
     const { start, end } = req.query;
 
-    var process = spawn("python", [
-        "./pathFinder/findPath.py",
-        start,
-        end,
-        10,
-        "MONDAY",
-        "Sunny",
-    ]);
+    var process = spawn(
+        "python",
+        ["./pathFinder/findPath.py", start, end, 10, "MONDAY", "Sunny"],
+        {
+            stdio: "pipe",
+        }
+    );
 
     process.stderr.on("data", (err) => {
         console.log(`Error: ${err}`);
