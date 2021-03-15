@@ -59,10 +59,11 @@ app.post("/findpath", (req, res) => {
         console.log(result);
         result = result.split("\r\n");
 
-        resData.bfsRoute = result[1];
-        resData.Dist = result[3];
-        resData.dijktraRoute = result[5];
+        resData = { ...resData, bfsRoute: result[1] };
+        resData = { ...resData, Dist: result[3] };
+        resData = { ...resData, dijktraRoute: result[5] };
         // return res.status(200).json(resData);
+        return resData;
     });
 
     process.on("close", (code) => {
