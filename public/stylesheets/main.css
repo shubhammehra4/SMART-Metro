@@ -320,3 +320,7 @@ select:focus {
   display: none;
   padding: 2rem 1rem;
 }
+
+#crowd {
+  font-size: xx-large;
+}

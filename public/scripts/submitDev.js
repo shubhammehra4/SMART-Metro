@@ -16,7 +16,8 @@ $(document).ready(function () {
                 .then((res) => {
                     console.log(res);
                     let crowd = $("#crowd");
-
+                    res = res.slice(1, -3);
+                    // console.log(res)
                     $(".loader").fadeOut();
                     crowd.html(res);
                 })
