@@ -64,16 +64,16 @@ app.post("/findpath", (req, res) => {
         resData = { ...resData, dijktraRoute: result[5] };
         // return res.status(200).json(resData);
         // var hello = resData;
+        process.on("close", (code) => {
+            //     console.log(hello);
+            console.log(
+                `Child Process (findPaths.py) close all stdio with code ${code}`
+            );
+            console.log("Final", resData);
+            return res.status(200).json(resData);
+        });
     });
 
-    process.on("close", (code) => {
-        console.log(resData);
-        //     console.log(hello);
-        console.log(
-            `Child Process (findPaths.py) close all stdio with code ${code}`
-        );
-        return res.status(200).json(resData);
-    });
     // console.log(hello);
     // } catch (err) {
     //     return res.status(500).json({
