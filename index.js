@@ -37,16 +37,18 @@ app.get("/about", (req, res) => {
 
 app.post("/findpath", (req, res) => {
     // try {
-    var resData = {};
+    var resData = {},
+        hello = {};
     const { start, end } = req.query;
 
-    var process = spawn(
-        "python",
-        ["./pathFinder/findPath.py", start, end, 10, "MONDAY", "Sunny"],
-        {
-            stdio: "pipe",
-        }
-    );
+    var process = spawn("python", [
+        "./pathFinder/findPath.py",
+        start,
+        end,
+        10,
+        "MONDAY",
+        "Sunny",
+    ]);
 
     process.stderr.on("data", (err) => {
         console.log(`Error: ${err}`);
@@ -61,12 +63,13 @@ app.post("/findpath", (req, res) => {
         resData = { ...resData, bfsRoute: result[1] };
         resData = { ...resData, Dist: result[3] };
         resData = { ...resData, dijktraRoute: result[5] };
+        hello = Object.assign(hello, resData);
         // return res.status(200).json(resData);
-        return resData;
     });
 
-    process.on("close", (code) => {
+    process.on("close", (code, sig) => {
         console.log(resData);
+        console.log(hello);
         console.log(
             `Child Process (getPaths.py) close all stdio with code ${code}`
         );
