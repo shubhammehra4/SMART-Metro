@@ -233,7 +233,7 @@ for i in data:
             v[y][x] = v[x][y]
 
 path = []
-dynamicWeight(v)
+# dynamicWeight(v)
 
 getShortestPath(src, dest, v, vis)
 print()

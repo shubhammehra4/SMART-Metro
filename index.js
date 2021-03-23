@@ -53,9 +53,7 @@ app.post("/findpath", async (req, res) => {
         });
 
         process.stdout.on("data", (data) => {
-            console.log("in data");
             let result;
-            console.log("Data: ", data);
             result = data.toString();
             console.log(result);
             result = result.split("\r\n");
@@ -63,12 +61,9 @@ app.post("/findpath", async (req, res) => {
             resData = { ...resData, bfsRoute: result[1] };
             resData = { ...resData, Dist: result[3] };
             resData = { ...resData, dijktraRoute: result[5] };
-            // return res.status(200).json(resData);
-            // var hello = resData;
         });
 
         process.on("close", (code) => {
-            console.log("in close");
             console.log(
                 `Child Process (findPaths.py) close all stdio with code ${code}`
             );
