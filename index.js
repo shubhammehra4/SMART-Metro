@@ -55,6 +55,7 @@ app.post("/findpath", async (req, res) => {
         process.stdout.on("data", async (data) => {
             console.log("in data");
             let result;
+            console.log("Data: ", data);
             result = await data.toString();
             console.log(result);
             result = result.split("\r\n");
