@@ -35,52 +35,51 @@ app.get("/about", (req, res) => {
     res.render("about");
 });
 
-app.post("/findpath", (req, res) => {
-    // try {
-    var resData = {};
-    const { start, end } = req.query;
+app.post("/findpath", async (req, res) => {
+    try {
+        var resData = {};
+        const { start, end } = req.query;
+        var process = await spawn("python", [
+            "./pathFinder/findPath.py",
+            start,
+            end,
+            10,
+            "MONDAY",
+            "Sunny",
+        ]);
 
-    var process = spawn("python", [
-        "./pathFinder/findPath.py",
-        start,
-        end,
-        10,
-        "MONDAY",
-        "Sunny",
-    ]);
+        process.stderr.on("data", (err) => {
+            console.log(`Error: ${err}`);
+        });
 
-    process.stderr.on("data", (err) => {
-        console.log(`Error: ${err}`);
-    });
+        process.stdout.on("data", async (data) => {
+            console.log("in data");
+            let result;
+            result = await data.toString();
+            // console.log(result);
+            result = result.split("\r\n");
 
-    process.stdout.on("data", (data) => {
-        let result;
-        result = data.toString();
-        console.log(result);
-        result = result.split("\r\n");
+            resData = { ...resData, bfsRoute: result[1] };
+            resData = { ...resData, Dist: result[3] };
+            resData = { ...resData, dijktraRoute: result[5] };
+            // return res.status(200).json(resData);
+            // var hello = resData;
+        });
 
-        resData = { ...resData, bfsRoute: result[1] };
-        resData = { ...resData, Dist: result[3] };
-        resData = { ...resData, dijktraRoute: result[5] };
-        // return res.status(200).json(resData);
-        // var hello = resData;
-    });
-    process.on("close", (code) => {
-        //     console.log(hello);
-        console.log(
-            `Child Process (findPaths.py) close all stdio with code ${code}`
-        );
-        console.log("Final", resData);
-        return res.status(200).json(resData);
-    });
-
-    // console.log(hello);
-    // } catch (err) {
-    //     return res.status(500).json({
-    //         message: "Oops Something went wrong!",
-    //         err,
-    //     });
-    // }
+        process.on("close", (code) => {
+            console.log("in close");
+            console.log(
+                `Child Process (findPaths.py) close all stdio with code ${code}`
+            );
+            console.log("Final", resData);
+            return res.status(200).json(resData);
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: "Oops Something went wrong!",
+            err,
+        });
+    }
 });
 
 app.post("/findpath/dev", (req, res) => {
