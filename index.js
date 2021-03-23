@@ -56,7 +56,7 @@ app.post("/findpath", async (req, res) => {
             console.log("in data");
             let result;
             result = await data.toString();
-            // console.log(result);
+            console.log(result);
             result = result.split("\r\n");
 
             resData = { ...resData, bfsRoute: result[1] };
