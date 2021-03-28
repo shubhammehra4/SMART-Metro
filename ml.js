@@ -1,4 +1,4 @@
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 
 exports.findPath = (start, end) => {
     return new Promise((resolve, reject) => {
@@ -65,5 +65,29 @@ exports.getCrowd = (station, time, day, weather) => {
             );
             resolve(out);
         });
+    });
+};
+
+exports.findPathExp = (start, end) => {
+    return new Promise((resolve, reject) => {
+        exec(
+            `python ./pathFinder/findPath.py "${start}" "${end}" 10 MONDAY Sunny`,
+            (err, stdout, stderr) => {
+                const out = [];
+
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                let result = stdout.toString("utf8");
+                result = result.split("\r\n");
+                out.push({
+                    bfsRoute: result[1],
+                    Dist: result[3],
+                    dijktraRoute: result[5],
+                });
+                resolve(out);
+            }
+        );
     });
 };

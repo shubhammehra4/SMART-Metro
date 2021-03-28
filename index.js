@@ -3,7 +3,7 @@ const express = require("express"),
     dotenv = require("dotenv"),
     app = express();
 
-const { findPath, getCrowd } = require("./ml");
+const { findPath, getCrowd, findPathExp } = require("./ml");
 const { stationDetails, stationNames } = require("./stationNames");
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -62,6 +62,13 @@ app.post("/findpath/dev", async (req, res) => {
             err,
         });
     }
+});
+
+app.get("/exp", async (req, res) => {
+    const { start, end } = req.query;
+    const result = await findPathExp(start, end);
+    console.log("Result: ", result);
+    res.json(result);
 });
 
 app.listen(PORT, function () {
