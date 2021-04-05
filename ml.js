@@ -84,6 +84,7 @@ exports.findPathExp = (start, end) => {
                 }
                 let result = stdout.toString("utf8");
                 result = result.split("\r\n");
+                console.log(result);
                 out.push({
                     bfsRoute: result[1],
                     Dist: result[3],
