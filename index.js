@@ -38,7 +38,10 @@ app.get("/about", (req, res) => {
 app.post("/findpath", async (req, res) => {
     try {
         const { start, end } = req.query;
+        console.log("In request");
         const result = await findPath(start, end);
+        console.log("request end");
+
         console.log(result);
 
         return res.status(200).json(result[0]);
@@ -66,7 +69,9 @@ app.post("/findpath/dev", async (req, res) => {
 
 app.get("/exp", async (req, res) => {
     const { start, end } = req.query;
+    console.log("In request");
     const result = await findPathExp(start, end);
+    console.log("request end");
     console.log("Result: ", result);
     res.json(result);
 });

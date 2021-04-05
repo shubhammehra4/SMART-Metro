@@ -13,6 +13,7 @@ exports.findPath = (start, end) => {
         const out = [];
         process.stdout.on("data", (data) => {
             let result = data.toString("utf8");
+            console.log("In Model Calling");
             //! debug
             // console.log(result);
             result = result.split("\r\n");
@@ -21,6 +22,7 @@ exports.findPath = (start, end) => {
                 Dist: result[3],
                 dijktraRoute: result[5],
             });
+            console.log("In Model Calling still..");
         });
 
         const err = [];
@@ -73,6 +75,7 @@ exports.findPathExp = (start, end) => {
         exec(
             `python ./pathFinder/findPath.py "${start}" "${end}" 10 MONDAY Sunny`,
             (err, stdout, stderr) => {
+                console.log("In Model Calling");
                 const out = [];
 
                 if (err) {
@@ -86,6 +89,7 @@ exports.findPathExp = (start, end) => {
                     Dist: result[3],
                     dijktraRoute: result[5],
                 });
+                console.log("In Model Calling still..");
                 resolve(out);
             }
         );
