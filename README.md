@@ -1,5 +1,3 @@
-# btpproj2021
+# SMART METRO
 
-1. Clone
-2. cd into folder and run 'npm install' in terminal.
-3. 'npm run dev'
+### A website powered by Machine Learning to dynamically predict the shortest and safest route from source and destination.
