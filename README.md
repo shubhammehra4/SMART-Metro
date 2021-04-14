@@ -1,3 +1,3 @@
 # SMART METRO
 
-### A website powered by Machine Learning to dynamically predict the shortest and safest route from source and destination.
+### A website powered by Machine Learning to dynamically predict the shortest and safest route from source to destination.
