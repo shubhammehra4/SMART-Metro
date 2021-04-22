@@ -117,10 +117,12 @@ def djisktras(src, dest, v):
         x = par[x]
     path.append(src)
     path = path[-1::-1]
-    print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' M')
+    #f=open("pathFile.txt","w")
+    print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' M',end='|')
     print("Path using Djikstra's Algorithm in the weighted graph")
     for i in path:
         print(i, end=',')
+    print(end='|')
 
 def dynamicWeight(v):
     v["Mandi House"]["Rajiv Chowk"] = 100000;
@@ -130,7 +132,7 @@ def dynamicWeight(v):
 
 def getShortestPath(src, dest, v, vis):
     if (src not in vis or dest not in vis):
-        print('Invalid Station Names')
+        print('Invalid Station Names',end='|')
         return
     q = Queue()
     q.put(src)
@@ -145,10 +147,10 @@ def getShortestPath(src, dest, v, vis):
                 x = par[x]
             path.append(src)
             path = path[-1::-1]
-            print('Shortest Path considering unweighted graph:')
+            print('Shortest Path considering unweighted graph:',end='|')
             for x in path:
                 print(x, end=',')
-            print()
+            print(end='|')
             return
 
         for x in v[front]:
@@ -169,7 +171,7 @@ def getAllPossiblePaths(src, dest, v, vis, path):
         path.pop()
         return
     if (src not in v):
-        print('no such station exists')
+        print('no such station exists',end='|')
         return
     vis[src] = 1
 
@@ -236,6 +238,6 @@ path = []
 # dynamicWeight(v)
 
 getShortestPath(src, dest, v, vis)
-print()
+print(end='|')
 djisktras(src, dest, v)
 vis = dict.fromkeys(vis, 0)
