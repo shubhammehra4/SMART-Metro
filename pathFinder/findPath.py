@@ -119,7 +119,7 @@ def djisktras(src, dest, v):
     path = path[-1::-1]
     #f=open("pathFile.txt","w")
     print('Total distance from ', src, ' to ', dest, ' is:', dist[dest], ' M',end='|')
-    print("Path using Djikstra's Algorithm in the weighted graph")
+    print("Path using Djikstra's Algorithm in the weighted graph", end="|")
     for i in path:
         print(i, end=',')
     print(end='|')
@@ -238,6 +238,6 @@ path = []
 # dynamicWeight(v)
 
 getShortestPath(src, dest, v, vis)
-print(end='|')
+# print(end='|')
 djisktras(src, dest, v)
 vis = dict.fromkeys(vis, 0)

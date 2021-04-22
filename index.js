@@ -42,7 +42,7 @@ app.post("/findpath", async (req, res) => {
         const result = await findPath(start, end);
         console.log("request end");
 
-        console.log(result);
+        console.log("Final Result Sent Back", result);
 
         return res.status(200).json(result[0]);
     } catch (err) {

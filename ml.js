@@ -15,12 +15,13 @@ exports.findPath = (start, end) => {
             let result = data.toString("utf8");
             console.log("In Model Calling");
             //! debug
-            // console.log(result);
-            result = result.split("\r\n");
+            result = result.split("|");
+            console.log(result);
+
             out.push({
                 bfsRoute: result[1],
-                Dist: result[3],
-                dijktraRoute: result[5],
+                Dist: result[2],
+                dijktraRoute: result[4],
             });
             console.log("In Model Calling still..");
         });
